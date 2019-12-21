@@ -1,0 +1,17 @@
+name: Library_rnlin
+version: 1.0-SNAPSHOT
+main: com.github.rnlin.rnlibrary.Rlibrary
+api-version: 1.14
+
+commands:
+  fly:
+    description: It's main commands of this plugin.
+    aliases: [fl,flymode]
+    usage:
+      /<command>
+    permisson: mamiyafumin.command.main.mamiyafumin
+    permission-message: You don't have the permission <permission>.
+permissions:
+  mamiyafumin.command.main.mamiyafumin:
+     description: mamiyafumin permissions.
+     default: true
