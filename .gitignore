@@ -74,3 +74,13 @@ fabric.properties
 ./build
 *.class
 *.jar
+.gradle/5.6.1/javaCompile/jarAnalysis.bin
+.gradle/5.6.1/javaCompile/classAnalysis.bin
+.gradle/5.6.1/fileHashes/fileHashes.lock
+.gradle/5.6.1/executionHistory/executionHistory.bin
+.gradle/5.6.1/javaCompile/javaCompile.lock
+.gradle/5.6.1/fileHashes/fileHashes.bin
+.gradle/buildOutputCleanup/buildOutputCleanup.lock
+.gradle/5.6.1/fileHashes/resourceHashesCache.bin
+.gradle/5.6.1/javaCompile/taskHistory.bin
+.gradle/5.6.1/executionHistory/executionHistory.lock
