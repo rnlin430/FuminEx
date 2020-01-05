@@ -26,6 +26,7 @@ dependencies {
     // annotation
     // https://pleiades.io/help/idea/annotating-source-code.html
     compile 'org.jetbrains:annotations:16.0.2'
+    compile fileTree(dir: 'lib', include: '*.jar')
 }
 
 import org.apache.tools.ant.filters.ReplaceTokens

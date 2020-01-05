@@ -3,7 +3,7 @@ package com.github.rnlin.rnlibrary;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-class ConsoleLog {
+public class ConsoleLog {
 
     static final String red    = "\u001b[00;31m";
     static final String green  = "\u001b[00;32m";
@@ -14,10 +14,10 @@ class ConsoleLog {
     static final String end    = "\u001b[00m";
 
     public static void writeLine(@Nullable String text) { System.out.println(end + text + end); }
-    public static void sendCaution(@Nullable String text) { System.out.println("[Caution]" + yellow + text + end); }
-    public static void sendWarning(@Nullable String text) { System.out.println("[Warming]" + red + text + end); }
-    public static void sendDescription(@Nullable String text) { System.out.println("[info]" + cyan + text + end); }
-    public static void sendDebugMessage(@Nullable String text) { System.out.println("[Debug]" + pink + text + end); }
+    public static void sendCaution(@Nullable String text) { System.out.println("[Caution] " + yellow + text + end); }
+    public static void sendWarning(@Nullable String text) { System.out.println("[Warming] " + red + text + end); }
+    public static void sendDescription(@Nullable String text) { System.out.println("[info] " + cyan + text + end); }
+    public static void sendDebugMessage(@Nullable String text) { System.out.println("[Debug] " + pink + text + end); }
 
     @NotNull
     public static String getGreenMessage(String message) { return green + message + end; }

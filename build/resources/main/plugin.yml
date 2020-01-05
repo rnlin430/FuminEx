@@ -1,5 +1,5 @@
 name: Library_rnlin
-version: @version@
+version: 1.0-SNAPSHOT
 main: com.github.rnlin.rnlibrary.test.Rlibrary
 api-version: 1.14
 
