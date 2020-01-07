@@ -9,9 +9,9 @@ commands:
     aliases: [sf,fl,flymode]
     usage:
       /<command>
-    permisson: mamiyafumin.command.main.mamiyafumin
+    permisson: fuminlib.command.main.fly
     permission-message: You don't have the permission <permission>.
 permissions:
-  mamiyafumin.command.main.mamiyafumin:
+  fuminlib.command.main.fly:
      description: mamiyafumin permissions.
      default: true
