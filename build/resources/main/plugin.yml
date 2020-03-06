@@ -1,7 +1,7 @@
-name: Library_rnlin
+name: FuminExtends
 version: 1.0-SNAPSHOT
 main: com.github.rnlin.rnlibrary.test.Rlibrary
-api-version: 1.14
+api-version: 1.15.2
 
 commands:
   setfly:

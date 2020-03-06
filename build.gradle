@@ -1,3 +1,5 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
 apply plugin: 'java'
 
 group = pluginGroup
@@ -5,7 +7,7 @@ version = pluginVersion
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
-// 文字コード
+// sourceEncoding
 tasks.withType(AbstractCompile)*.options*.encoding = tasks.withType(GroovyCompile)*.groovyOptions*.encoding = 'UTF-8'
 
 repositories {
@@ -13,6 +15,10 @@ repositories {
     maven {
         name = 'spigotmc-repo'
         url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+        content {
+            includeGroup 'org.bukkit'
+            includeGroup 'org.spigotmc'
+        }
     }
     maven {
         name = 'sonatype'
@@ -20,19 +26,41 @@ repositories {
     }
 }
 
+task TestTask {
+    doLast {
+        print "TestTask"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    compileOnly 'org.spigotmc:spigot-api:1.15-R0.1-SNAPSHOT'
-    // annotation
-    // https://pleiades.io/help/idea/annotating-source-code.html
+    // The Spigot API with no shadowing. Requires the OSS repo.
+    compileOnly 'org.spigotmc:spigot-api:1.15.2-R0.1-SNAPSHOT'
+    // The Bukkit API with no shadowing.
+    compileOnly 'org.bukkit:bukkit:1.15.2-R0.1-SNAPSHOT'
+    // The full Spigot server with no shadowing. Requires mavenLocal.
+    //compileOnly 'org.spigotmc:spigot:1.15.2-R0.1-SNAPSHOT'
+    // The full CraftBukkit server with no shadowing. Requires mavenLocal.
+    //compileOnly 'org.bukkit:craftbukkit:1.15.2-R0.1-SNAPSHOT'
+
+    // annotation// https://pleiades.io/help/idea/annotating-source-code.html
     compile 'org.jetbrains:annotations:16.0.2'
     compile fileTree(dir: 'lib', include: '*.jar')
 }
-
-import org.apache.tools.ant.filters.ReplaceTokens
 
 processResources {
     from(sourceSets.main.resources.srcDirs) {
         filter ReplaceTokens, tokens: [version: version]
     }
 }
+
