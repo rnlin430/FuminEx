@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class FuminExtends extends JavaPlugin implements Listener{
+public class FuminExPlugin extends JavaPlugin implements Listener{
 
     MainCommand command;
     String[] commandNames = {"setfly"};

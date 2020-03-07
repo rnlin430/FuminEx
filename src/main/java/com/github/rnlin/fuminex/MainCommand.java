@@ -9,11 +9,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class MainCommand extends CommandManagement {
 
-    private final FuminExtends fuminExtends;
+    private final FuminExPlugin fuminExPlugin;
 
-    public MainCommand(JavaPlugin plugin, String[] commandNames, FuminExtends fuminExtends) {
+    public MainCommand(JavaPlugin plugin, String[] commandNames, FuminExPlugin fuminExPlugin) {
         super(plugin);
-        this.fuminExtends = fuminExtends;
+        this.fuminExPlugin = fuminExPlugin;
         setCommandNames(commandNames);
     }
 
@@ -25,15 +25,15 @@ public class MainCommand extends CommandManagement {
 
              Player player = (Player) sender;
              if(!player.isOnline()) return true;
-             if(!FuminExtends.playersData.contains(player.getUniqueId(), "IsFly")){
-                 FuminExtends.playersData.setData(player.getUniqueId(), "IsFly", true);
+             if(!FuminExPlugin.playersData.contains(player.getUniqueId(), "IsFly")){
+                 FuminExPlugin.playersData.setData(player.getUniqueId(), "IsFly", true);
                  PlayerMessage.debugMessage(player, "設定なし -> true");
              } else {
-                 if(FuminExtends.playersData.getBool(player.getUniqueId(), "IsFly")) {
-                     FuminExtends.playersData.setData(player.getUniqueId(), "IsFly", false);
+                 if(FuminExPlugin.playersData.getBool(player.getUniqueId(), "IsFly")) {
+                     FuminExPlugin.playersData.setData(player.getUniqueId(), "IsFly", false);
                      PlayerMessage.debugMessage(player, "true -> false");
                  } else {
-                     FuminExtends.playersData.setData(player.getUniqueId(), "IsFly", true);
+                     FuminExPlugin.playersData.setData(player.getUniqueId(), "IsFly", true);
                      PlayerMessage.debugMessage(player, "false -> true");
                  }
              }

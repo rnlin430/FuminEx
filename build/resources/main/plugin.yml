@@ -1,7 +1,10 @@
-name: FuminExtends
-version: 1.0-SNAPSHOT
-main: com.github.rnlin.rnlibrary.test.Rlibrary
-api-version: 1.15.2
+name: @jar.baseName@
+version: 1.0.0-SNAPSHOT
+main: com.github.rnlin.fuminex.FuminExPlugin
+api-version: '1.15'
+description: This plugin is an extension plugin for MamiyFumin plugin.
+author: rnlin Twitter(@rnlin)
+depend: [MamiyaFumin]
 
 commands:
   setfly:

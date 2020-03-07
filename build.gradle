@@ -1,9 +1,12 @@
 import org.apache.tools.ant.filters.ReplaceTokens
 
 apply plugin: 'java'
+apply plugin: 'idea'
 
 group = pluginGroup
 version = pluginVersion
+jar.baseName = pluginName
+
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
@@ -26,14 +29,40 @@ repositories {
     }
 }
 
-task TestTask {
-    doLast {
-        print "TestTask"
+class GreetingTask extends DefaultTask {
+    private String greeting
+    void greeting(g) {
+        greeting = g
+    }
+
+    @TaskAction
+    def greet() {
+        println greeting
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'idea'
+def pluginsPath = "G:\\minecraftserver\\mSpigot1.15.2\\plugins"
+
+task TestTask(type: GreetingTask) {
+    doLast {
+        greeting group
+    }
+}
+
+task updateDependency(type: Copy) {
+        from "${pluginsPath}"
+        into "lib/"
+        include "MamiyaFumin*.jar"
+}
+
+task copyPluginToTestserver(dependsOn: ['build'], type: Copy) {
+    from "${buildDir}/libs"
+    into "${pluginsPath}"
+    include "*.jar"
+}
+
+
+
 
 idea {
     module {
