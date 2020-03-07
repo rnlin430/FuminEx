@@ -7,6 +7,26 @@ group = pluginGroup
 version = pluginVersion
 jar.baseName = pluginName
 
+buildscript {
+    repositories.mavenCentral()
+    dependencies.classpath 'org.ajoberstar:grgit:1.7.2'
+}
+
+
+ext {
+    git = org.ajoberstar.grgit.Grgit.open(file('.'))
+    describedCommit = git.describe().toString().trim()
+}
+
+version = describedCommit +
+        (describedCommit.matches(".*-[0-9]+-g[0-9a-f]{7}") ? "-SNAPSHOT" : "") +
+        (git.status().isClean() ? "" : "+dirty")
+
+task showVersion {
+    doLast {
+        println version
+    }
+}
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
@@ -41,7 +61,7 @@ class GreetingTask extends DefaultTask {
     }
 }
 
-def pluginsPath = "G:\\minecraftserver\\mSpigot1.15.2\\plugins"
+def pluginsPath = "G:\\minecraftserver\\Spigot1.15.2\\plugins"
 
 task TestTask(type: GreetingTask) {
     doLast {
@@ -60,9 +80,6 @@ task copyPluginToTestserver(dependsOn: ['build'], type: Copy) {
     into "${pluginsPath}"
     include "*.jar"
 }
-
-
-
 
 idea {
     module {

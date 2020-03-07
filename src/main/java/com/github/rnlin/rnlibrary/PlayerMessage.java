@@ -4,8 +4,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 public class PlayerMessage {
-    private static final String PLUGIN_NAME = "mamiyafumin";
+    private static String PLUGIN_NAME = null;
     private static boolean isDebugMassage = true;
+
 
     public static void sendDescription(CommandSender sender, String message) {
         sender.sendMessage(ChatColor.AQUA + message);
@@ -25,6 +26,11 @@ public class PlayerMessage {
 
     public static void cautionMessage(CommandSender sender, String message) {
         sender.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + message);
+    }
+
+
+    public static void setPluginName(String name) {
+        PLUGIN_NAME = name;
     }
 
     public static void activateDebugMassage(boolean b) {

@@ -2,6 +2,7 @@ package com.github.rnlin.fuminex;
 
 import com.github.rnlin.MamiyaFumin;
 import com.github.rnlin.rnlibrary.ConsoleLog;
+import com.github.rnlin.rnlibrary.PlayerMessage;
 import com.github.rnlin.rnlibrary.PlayersData;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -29,6 +30,8 @@ public class FuminExPlugin extends JavaPlugin implements Listener{
 
         // CreatePlayerData
         playersData = new PlayersData(this, PLAYER_DATA_FILE_NAME);
+
+        PlayerMessage.setPluginName(this.getDescription().getName());
 
     }
 
