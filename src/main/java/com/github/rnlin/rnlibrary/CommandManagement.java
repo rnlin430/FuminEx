@@ -7,7 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
 
-public class CommandManagement implements CommandExecutor {
+public abstract class CommandManagement implements CommandExecutor {
 
     protected final JavaPlugin plugin;
     private String[] commandNames;
@@ -42,13 +42,10 @@ public class CommandManagement implements CommandExecutor {
         }
     }
 
-    public boolean onSingleCommand(CommandSender sender, Command command, String label) {
-        return true;
-    }
 
-    public boolean onMultiCommand(CommandSender sender, Command command, String label, String[] args) {
-        return true;
-    }
+    public abstract boolean onSingleCommand(CommandSender sender, Command command, String label);
+
+    public abstract boolean onMultiCommand(CommandSender sender, Command command, String label, String[] args);
 
     protected void setCommandNames(String[] names) {
         this.commandNames = names;

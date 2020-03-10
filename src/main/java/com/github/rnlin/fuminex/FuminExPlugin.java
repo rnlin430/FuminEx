@@ -2,7 +2,7 @@ package com.github.rnlin.fuminex;
 
 import com.github.rnlin.MamiyaFumin;
 import com.github.rnlin.rnlibrary.ConsoleLog;
-import com.github.rnlin.rnlibrary.PlayerMessage;
+import com.github.rnlin.rnlibrary.*;
 import com.github.rnlin.rnlibrary.PlayersData;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -48,7 +48,7 @@ public class FuminExPlugin extends JavaPlugin implements Listener{
         return playersData;
     }
 
-    public boolean setFly(Player player, boolean b) {
+    public static boolean setFly(Player player, boolean b) {
         if(!b) {
             if (player.getAllowFlight()) {
                 if (player.isFlying()) player.setFlying(false);
@@ -65,7 +65,7 @@ public class FuminExPlugin extends JavaPlugin implements Listener{
         }
     }
 
-    public boolean isFly(Player player) {
+    public static boolean isFly(Player player) {
         return player.getAllowFlight();
     }
 

@@ -6,21 +6,7 @@ apply plugin: 'idea'
 group = pluginGroup
 version = pluginVersion
 jar.baseName = pluginName
-
-buildscript {
-    repositories.mavenCentral()
-    dependencies.classpath 'org.ajoberstar:grgit:1.7.2'
-}
-
-
-ext {
-    git = org.ajoberstar.grgit.Grgit.open(file('.'))
-    describedCommit = git.describe().toString().trim()
-}
-
-version = describedCommit +
-        (describedCommit.matches(".*-[0-9]+-g[0-9a-f]{7}") ? "-SNAPSHOT" : "") +
-        (git.status().isClean() ? "" : "+dirty")
+def pluginsPath = "G:\\minecraftserver\\Spigot1.15.2\\plugins"
 
 task showVersion {
     doLast {
@@ -61,18 +47,24 @@ class GreetingTask extends DefaultTask {
     }
 }
 
-def pluginsPath = "G:\\minecraftserver\\Spigot1.15.2\\plugins"
-
 task TestTask(type: GreetingTask) {
     doLast {
         greeting group
     }
 }
 
+task cleanLibs(type: Delete) {
+    println 'cleanLibsTask Start'
+        setDelete file("${buildDir}/libs").listFiles().findAll{it.name.endsWith(".jar")}
+    println 'cleanLibsTask End'
+}
+
 task updateDependency(type: Copy) {
+    println 'updateDependency Start'
         from "${pluginsPath}"
         into "lib/"
         include "MamiyaFumin*.jar"
+    println 'updateDependency End'
 }
 
 task copyPluginToTestserver(dependsOn: ['build'], type: Copy) {

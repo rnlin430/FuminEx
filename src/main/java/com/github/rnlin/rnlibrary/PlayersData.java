@@ -11,9 +11,13 @@ public class PlayersData extends CustomConfig{
         init();
     }
 
-    public void setData(UUID uuid, String key, Object b) {
+    public void saveData(UUID uuid, String key, Object b) {
         getConfig().set(uuid.toString() + "." + key, b);
         saveConfig();
+    }
+
+    public void setData(UUID uuid, String key, Object b) {
+        getConfig().set(uuid.toString() + "." + key, b);
     }
 
     public boolean getBool(UUID uuid, String key) {
