@@ -7,25 +7,27 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class MainCommand extends CommandManagement {
 
     private final FuminExPlugin fuminExPlugin;
 
-    public MainCommand(JavaPlugin plugin, String[] commandNames, FuminExPlugin fuminExPlugin) {
-        super(plugin);
+    public MainCommand(String[] commandNames, FuminExPlugin fuminExPlugin) {
+        super(fuminExPlugin);
         this.fuminExPlugin = fuminExPlugin;
         setCommandNames(commandNames);
     }
 
     @Override
     public boolean onSingleCommand(CommandSender sender, Command command, String label) {
-
-
         if(sender instanceof Player) {
+
+            List<String> nameList = new ArrayList<>();
+
 
              Player player = (Player) sender;
              if(!player.isOnline()) return true;

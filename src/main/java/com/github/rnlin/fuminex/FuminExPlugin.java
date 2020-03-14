@@ -26,7 +26,7 @@ public class FuminExPlugin extends JavaPlugin implements Listener{
         // getLogger().info(ConsoleLog.getCyanMessage( "プラグインが有効になったよ!"));
 
         // コマンド生成
-        command = new MainCommand(this, commandNames, this);
+        command = new MainCommand(commandNames, this);
 
         // CreatePlayerData
         playersData = new PlayersData(this, PLAYER_DATA_FILE_NAME);
